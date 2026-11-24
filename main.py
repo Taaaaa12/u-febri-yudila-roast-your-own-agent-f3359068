@@ -19,6 +19,8 @@ def main() -> None:
     text = ROAST.strip()
     assert 1 <= len(text) <= 200, f"roast must be 1-200 chars, got {len(text)}"
     assert text.strip() == text and "\n" not in text, "must be a single line"
+    # Bundle-session edit: guard comment, output unchanged.
+    assert len(text.split()) >= 5, "roast must have several words"
     os.makedirs("/output", exist_ok=True)
     with open("/output/entry.txt", "w", encoding="utf-8", newline="\n") as f:
         f.write(text + "\n")
